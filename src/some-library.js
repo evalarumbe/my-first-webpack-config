@@ -1,8 +1,13 @@
-export default {
-  name: 'Shakespeare & Co',
+export default function (location) {
+  switch (location) {
+    case 'France':
+      return 'Shakespeare & Co';
+      break;
+    case 'Egypt':
+      return 'Alexandria';
+      break;
+    case 'Myst':
+      return 'the tower';
+      break;
+  }
 };
-
-// Named export is also chill:
-// export const library = {
-//   name: 'Shakespeare & Bro',
-// };
