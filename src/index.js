@@ -1,4 +1,5 @@
 import library from './some-library.js';
+import debug from './debug-script-for-some-library.js';
 
 (() => {
   const main = function () {
@@ -8,7 +9,9 @@ import library from './some-library.js';
 
     // Get something from the DOM at runtime (can't hard-code this into the bundle)
     const location = locations[randomLoc].innerText;
-    console.log(location);
+    
+    // Call the debug script (second dependency)
+    debug();
 
     // Use the DOM data to query the library
     console.log(`I log therefore I am chilling at ${library(location)} in ${location}`);
