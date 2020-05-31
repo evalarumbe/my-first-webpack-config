@@ -5,4 +5,12 @@ export default function () {
   console.log(`France: ${library('France')}`);
   console.log(`Egypt: ${library('Egypt')}`);
   console.log(`Myst: ${library('Myst')}`);
+
+  const jusEs6TingsToTestBabel = () => {
+    const items = [...document.querySelector('#locations').children];
+
+    items.forEach(console.log);
+  };
+
+  jusEs6TingsToTestBabel();
 } 
