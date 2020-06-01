@@ -9,12 +9,16 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: 'babel-loader',
       }
     ]
   },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
   }
 };
