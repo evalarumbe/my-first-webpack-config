@@ -1,5 +1,5 @@
-import library from './some-library.js';
-import debug from './debug-script-for-some-library.js';
+import library from './some-library';
+import debug from './debug-script-for-some-library';
 
 (() => {
   const main = function () {
