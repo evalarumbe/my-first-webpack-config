@@ -20,5 +20,6 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
+    publicPath: '/dist', // same value as output path so we can examine the output 
   }
 };
