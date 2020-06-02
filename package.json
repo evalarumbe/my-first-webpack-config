@@ -22,8 +22,9 @@
     "webpack-dev-server": "^3.11.0"
   },
   "browserslist": [
-    "> 1%",
-    "> 5% in alt-AF",
-    "> 5% in alt-AS"
+    "> 5%",
+    "> 2% in alt-EU",
+    "> 2% in alt-NA",
+    "last 6 versions"
   ]
 }
