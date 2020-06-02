@@ -1,5 +1,5 @@
-import 'core-js/stable';
-// import 'core-js-bundle';
+// import 'core-js/stable';
+import 'core-js-bundle';
 // import 'regenerator-runtime/runtime';
 import { library, posts } from './some-library';
 import debug from './debug-script-for-some-library';
