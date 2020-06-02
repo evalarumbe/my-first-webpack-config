@@ -22,6 +22,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "browserslist": [
-    "> 1%"
+    "> 1%",
+    "> 5% in alt-AF",
+    "> 5% in alt-AS"
   ]
 }
