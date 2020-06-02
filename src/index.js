@@ -1,5 +1,5 @@
+import 'core-js/stable';
 // import 'core-js-bundle';
-// import 'core-js/stable';
 // import 'regenerator-runtime/runtime';
 import { library, posts } from './some-library';
 import debug from './debug-script-for-some-library';
@@ -24,7 +24,7 @@ import debug from './debug-script-for-some-library';
     console.log(weakSetStuff);
 
     console.log(`Behold all these posts: ${posts()}`);
-    
+
     console.log(`3 ** 2? ${3 ** 2}`);
   };
 
