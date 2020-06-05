@@ -1,4 +1,4 @@
-import 'core-js/stable';
+import 'core-js/stable'; // FIXME? On each build, Babel debug text says "Import of core-js was not found" (the error comes from other src files. I didn't think I had to import this for every file, just at the entry point like right here. What's going on? So far I'm not even using any core-js polyfills so haven't properly tested)
 import 'regenerator-runtime/runtime';
 import { library, posts } from './some-library';
 import debug from './debug-script-for-some-library';
