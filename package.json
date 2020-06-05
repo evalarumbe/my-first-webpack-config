@@ -2,6 +2,7 @@
   "name": "evas-webpack-config",
   "version": "1.0.0",
   "description": "SCSS and JS for Dev and Prod",
+  "repository": "github:evalarumbe/evas-webpack-config.git",
   "main": "./src/index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
