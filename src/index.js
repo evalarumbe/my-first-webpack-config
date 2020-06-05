@@ -28,4 +28,5 @@ import debug from './debug-script-for-some-library';
   };
 
   window.addEventListener('load', main);
+  console.log('blllllllaaaa');
 })();
