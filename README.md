@@ -13,64 +13,65 @@ I built this [Webpack](https://webpack.js.org/) config after following some of t
 
 ## File structure
 
-| Path                   | But why |
-| :--------------------- | :------- |
-| `.gitignore`           | List files or dirs that should not be commited to the repo |
-| `package.json`         | Info about this project. List dependencies and scripts used to run Webpack |
-| `package-lock.json`    | Describe exactly which versions of dependencies are installed |
-| `babel.config.json`    | Configure options specific to Babel, which is loaded via Webpack. See below for details |
-| `webpack.dev.js`       | Configs that are only relevant in development (prioritize developer experience) |
-| `webpack.dev.js`       | Configs that are only relevant in production (prioritize user experience) |
-| `webpack.common.js`    | Configs that are common to both development and production environments |
-| `src/`                 | Source code. Webpack's input. |
-| `dist/`                | Files to distribute to the browser. Webpack's output. Can also contain hand-coded files. |
+| Path                      | But why |
+| :------------------------ | :------- |
+| `.gitignore`              | List files or dirs that should not be commited to the repo. |
+| `package.json`            | Info about this project. List dependencies and scripts used to run Webpack. |
+| `package-lock.json`       | Describe exactly which versions of dependencies are installed. |
+| `babel.config.json`       | Configure options specific to Babel, which is loaded via Webpack. See below for details. |
+| `webpack.dev.js`          | Configs that are only relevant in development (prioritize developer experience) |
+| `webpack.dev.js`          | Configs that are only relevant in production (prioritize user experience) |
+| `webpack.common.js`       | Configs that are common to both development and production environments |
+| `src/`                    | Source code. Webpack's input. |
+| `dist/`                   | Files to distribute to the browser. Webpack's output. Can also contain hand-coded files. |
+| `dist/index.html`         | Hand-coded file in this example |
 
 ## Packages used
 
 ### Browser support
 
-| Package                | But why |
-| :--------------------- | :------ |
-| `browserslist`         | I let `package.json` specify which browsers to support. Used by many tools, such as Babel and Autoprefixer |
+| Package                   | But why |
+| :------------------------ | :------ |
+| `browserslist`            | I let `package.json` specify which browsers to support. Used by many tools, such as Babel and Autoprefixer. |
 
 ### JavaScript
 
 [Babel](https://babeljs.io/) lets us write modern JS while exporting cross-compatible code for older browsers that can't handle the heat.
 
-| Package                | But why |
-| :--------------------- | :------ |
-| `babel-loader`         | Enable Webpack to run `@babel/core` |
-| `@babel/core`          | This is Babel! But I'm useless without plugins or presets (which are collections of plugins) |
-| `@babel/preset-env`    | Preset based on [caniuse](https://caniuse.com/). I decide which syntax to change depending on the project's supported browsers |
-| `core-js`              | Provide polyfills for new js features that add functionality (more than just new syntax) |
+| Package                   | But why |
+| :------------------------ | :------ |
+| `babel-loader`            | Enable Webpack to run `@babel/core`. |
+| `@babel/core`             | This is Babel! But I'm useless without plugins or presets (which are collections of plugins). |
+| `@babel/preset-env`       | Preset based on [caniuse](https://caniuse.com/). I decide which syntax to change depending on the project's supported browsers. |
+| `core-js`                 | Provide polyfills for new js features that add functionality (more than just new syntax). |
 
 ### CSS
 
 These work as a pipeline: [Sass](https://sass-lang.com/) => CSS => add prefixes => minify => inject into style tags.
 In the Webpack config, you'll notice the pipeline runs from bottom to top, but here I'll list them in reading order. The freaky config syntax for postcss plugins came from [the postcss-loader docs](https://webpack.js.org/loaders/postcss-loader/#plugins)
 
-| Package                | But why |
-| :--------------------- | :------ |
-| `sass-loader`          | Enable Webpack to run `sass`. |
-| `sass`                 | Compile SCSS syntax into CSS. |
-| `fibers`               | Make SCSS compilation faster as recommended in [the docs](https://webpack.js.org/loaders/sass-loader/). |
-| `postcss-loader`       | Enable CSS to run through plugins before it hits `dist/`. |
-| `postcss-preset-env`   | Plugin used by postcss. Includes [Autoprefixer](http://autoprefixer.github.io/). |
-| `cssnano`              | Plugin used by postcss. Minifies CSS. |
-| `css-loader`           | Enable CSS to be piped to `style-loader`. |
-| `style-loader`         | Inject styles into `style` tags in the `head` of `dist/index.html`. |
+| Package                   | But why |
+| :------------------------ | :------ |
+| `sass-loader`             | Enable Webpack to run `sass`. |
+| `sass`                    | Compile SCSS syntax into CSS. |
+| `fibers`                  | Make SCSS compilation faster as recommended in [the docs](https://webpack.js.org/loaders/sass-loader/). |
+| `postcss-loader`          | Enable CSS to run through plugins before it hits `dist/`. |
+| `postcss-preset-env`      | Plugin used by postcss. Includes [Autoprefixer](http://autoprefixer.github.io/). |
+| `cssnano`                 | Plugin used by postcss. Minifies CSS. |
+| `css-loader`              | Enable CSS to be piped to `style-loader`. |
+| `mini-css-extract-plugin` | Generate static CSS files so users without JS still have a stylish time. |
 
 ### Webpack
 
 Webpack lets us bundle source files into distributed files according to rules set in the Webpack config files.
 
-| Package                | But why |
-| :--------------------- | :------ |
-| `webpack`              | I am Webpack. Hear me roar. |
-| `webpack-cli`          | I am a required helper for Webpack. |
-| `webpack-merge`        | Enable split config files for dev and prod purposes (and common configs to both). |
-| `webpack-dev-server`   | Look ma, no hands! Enable a no-refresh dev experience, including [hot module replacement (HMR)](https://webpack.js.org/concepts/hot-module-replacement/). |
-| `clean-webpack-plugin` | Clean out old unused files from `dist/` on every build. Handy to keep `dist/` free of unused temp files generated by HMR when webpack-dev-server is set to write to `dist/`. |
+| Package                   | But why |
+| :------------------------ | :------ |
+| `webpack`                 | I am Webpack. Hear me roar. |
+| `webpack-cli`             | I am a required helper for Webpack. |
+| `webpack-merge`           | Enable split config files for dev and prod purposes (and common configs to both). |
+| `webpack-dev-server`      | Look ma, no hands! Enable a no-refresh dev experience, including [hot module replacement (HMR)](https://webpack.js.org/concepts/hot-module-replacement/). |
+| `clean-webpack-plugin`    | Clean out old unused files from `dist/` on every build. Handy to keep `dist/` free of unused temp files generated by HMR when webpack-dev-server is set to write to `dist/`. |
 
 ## Learnings
 
