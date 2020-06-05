@@ -14,7 +14,7 @@ I built this [Webpack](https://webpack.js.org/) config after following some of t
 ## File structure
 
 | Path                   | But why |
-| :--------------------- | :------- |
+| ---------------------- | :------- |
 | `.gitignore`           | List files or dirs that should not be commited to the repo |
 | `package.json`         | Info about this project. List dependencies and scripts used to run Webpack |
 | `package-lock.json`    | Describe exactly which versions of dependencies are installed |
@@ -30,7 +30,7 @@ I built this [Webpack](https://webpack.js.org/) config after following some of t
 ### Browser support
 
 | Package                | But why |
-| :--------------------- | :------ |
+| ---------------------- | :------ |
 | `browserslist`         | I let `package.json` specify which browsers to support. Used by many tools, such as Babel and Autoprefixer |
 
 ### JavaScript
@@ -38,7 +38,7 @@ I built this [Webpack](https://webpack.js.org/) config after following some of t
 [Babel](https://babeljs.io/) lets us write modern JS while exporting cross-compatible code for older browsers that can't handle the heat.
 
 | Package                | But why |
-| :--------------------- | :------ |
+| ---------------------- | :------ |
 | `babel-loader`         | Enable Webpack to run `@babel/core` |
 | `@babel/core`          | This is Babel! But I'm useless without plugins or presets (which are collections of plugins) |
 | `@babel/preset-env`    | Preset based on [caniuse](https://caniuse.com/). I decide which syntax to change depending on the project's supported browsers |
@@ -50,7 +50,7 @@ These work as a pipeline: [Sass](https://sass-lang.com/) => CSS => add prefixes 
 In the Webpack config, you'll notice the pipeline runs from bottom to top, but here I'll list them in reading order. The freaky config syntax for postcss plugins came from [the postcss-loader docs](https://webpack.js.org/loaders/postcss-loader/#plugins)
 
 | Package                | But why |
-| :--------------------- | :------ |
+| ---------------------- | :------ |
 | `sass-loader`          | Enable Webpack to run `sass`. |
 | `sass`                 | Compile SCSS syntax into CSS. |
 | `fibers`               | Make SCSS compilation faster as recommended in [the docs](https://webpack.js.org/loaders/sass-loader/). |
@@ -65,7 +65,7 @@ In the Webpack config, you'll notice the pipeline runs from bottom to top, but h
 Webpack lets us bundle source files into distributed files according to rules set in the Webpack config files.
 
 | Package                | But why |
-| :--------------------- | :------ |
+| ---------------------- | :------ |
 | `webpack`              | I am Webpack. Hear me roar. |
 | `webpack-cli`          | I am a required helper for Webpack. |
 | `webpack-merge`        | Enable split config files for dev and prod purposes (and common configs to both). |
