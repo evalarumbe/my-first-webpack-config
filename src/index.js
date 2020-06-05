@@ -34,5 +34,4 @@ import './scss/main.scss';
   };
 
   window.addEventListener('load', main);
-  console.log('degular?');
 })();
