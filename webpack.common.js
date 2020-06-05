@@ -8,7 +8,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         use: [
           'style-loader',
           { loader: 'css-loader', options: { importLoaders: 1} },
@@ -19,6 +19,7 @@ module.exports = {
               require('cssnano')(),
             ],
           }},
+          'sass-loader'
         ],
       },
     ],

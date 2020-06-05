@@ -7,7 +7,7 @@ import { library, posts } from './some-library';
 import debug from './debug-script-for-some-library';
 
 // styles
-import './degular.css';
+import './blorp.scss';
 
 (() => {
   const main = function () {
