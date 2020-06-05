@@ -3,11 +3,11 @@ import 'core-js/stable'; // FIXME? On each build, Babel debug text says "Import 
 import 'regenerator-runtime/runtime';
 
 // local imports
-import { library, posts } from './some-library';
-import debug from './debug-script-for-some-library';
+import { library, posts } from './some-library.js';
+import debug from './debug-script-for-some-library.js';
 
 // styles
-import './blorp.scss';
+import './scss/main.scss';
 
 (() => {
   const main = function () {
