@@ -19,6 +19,6 @@ export const posts = function () {
     return data;
   }
 
-  getPosts().then(retrievedPosts => console.log(retrievedPosts));
+  getPosts().then(retrievedPosts => console.log('Voilà your posts!', retrievedPosts));
 };
 

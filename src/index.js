@@ -22,17 +22,17 @@ import './scss/main.scss';
     debug();
 
     // Use the DOM data to query the library
-    console.log(`I log therefore I am chilling at ${library(location)} in ${location}`);
+    console.log(`Random library: ${library(location)} in ${location}`);
     
     console.log('Do some more ES6 stuff with WeakSet');
     const weakSetStuff = new WeakSet([]);
     console.log(weakSetStuff);
 
-    console.log(`Behold all these posts: ${posts()}`);
+    console.log(`Summoning posts from JSON Placeholder...`);
+    posts();
 
     console.log(`3 ** 2? ${3 ** 2}`);
   };
 
   window.addEventListener('load', main);
-  console.log('degular?');
 })();
