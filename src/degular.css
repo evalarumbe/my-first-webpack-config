@@ -6,4 +6,6 @@
   padding: 3em;
   background-color: hotpink;
   border-radius: 2ch;
+  display: grid;
+  row-gap: 1em;
 }
