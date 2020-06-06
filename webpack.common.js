@@ -41,6 +41,11 @@ module.exports = {
       ],
     }),
   ],
+  optimization: { // code splitting without duplicates
+    splitChunks: {
+      chunks: 'all',
+    }
+  },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
