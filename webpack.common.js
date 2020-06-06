@@ -3,8 +3,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
+  context: path.resolve(__dirname, 'src'), // Look in src for all paths. Docs recommend including this.
   entry: {
-    main: './src/index.js',
+    main: './index.js',
   },
   module: {
     rules: [
