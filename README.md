@@ -1,7 +1,9 @@
 ![Webpack Logo](./webpack-logo.gif  )
 # Eva's Webpack Config
 
-I built this [Webpack](https://webpack.js.org/) config after following some of the official guides:
+This [Webpack](https://webpack.js.org/) config is an ongoing work in progress. [Feedback is always welcome](mailto:evalarumbe@gmail.com).
+
+I built this after following some of the official guides:
 
 - [Getting Started](https://webpack.js.org/guides/getting-started/)
 - [Asset Management](https://webpack.js.org/guides/asset-management/)
