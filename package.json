@@ -34,8 +34,6 @@
   },
   "browserslist": [
     "> 5%",
-    "> 2% in alt-EU",
-    "> 2% in alt-NA",
     "last 6 versions"
   ]
 }
