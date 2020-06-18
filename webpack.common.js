@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, 'src'), // Look in src for all paths. Docs recommend including this.
@@ -25,10 +26,18 @@ module.exports = {
           { loader: 'sass-loader', options: { sourceMap: true }},
         ],
       },
+      {
+        test: /\.(hbs|handlebars)$/,
+        use: 'handlebars-loader',
+      },
     ],
   },
   plugins: [
     new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Barberino',
+      template: path.resolve(__dirname, 'src', 'index.hbs'),
+    }),
     new CleanWebpackPlugin({
       // Recommendation to self: Use both cleanOnceBeforeBuildPatterns and cleanAfterEveryBuildPatterns with the same values, so all builds (first and watched) behave consistently
       cleanOnceBeforeBuildPatterns: [ // on first build, delete everything (*) except (!) html (*.html)
