@@ -8,38 +8,21 @@ import debug from './debug-script-for-some-library.js';
 
 // templates
 import postsTemplate from './templates/partials/posts.hbs';
+import libraryTemplate from './templates/partials/random-library.hbs';
 
 // styles
 import './scss/main.scss';
 
 (() => {
   const main = function () {
-    const doDomThings = function() {
-      const locations = [...document.getElementById('locations').children];
-      const randomLoc = Math.floor(Math.random() * locations.length);
-
-      // Get something from the DOM at runtime (can't hard-code this into the bundle)
-      const location = locations[randomLoc].innerText;
-      
-      // Call the debug script (second dependency)
-      debug();
-    };
-
-    const doRandomConsoleThings = function() {
-      // Use the DOM data to query the library
-      console.log(`Random library: ${library(location)} in ${location}`);
-      
+    const doModernThings = function() {
       console.log('Do some more ES6 stuff with WeakSet');
       const weakSetStuff = new WeakSet([]);
       console.log(weakSetStuff);
-
-      console.log(`Summoning posts from JSON Placeholder...`);
-      posts();
-
       console.log(`3 ** 2? ${3 ** 2}`);
     };
 
-    const doHandlebarsThings = async function() {
+    const renderPosts = async function() {
       // get the data
       const posts = await getPosts();
 
@@ -52,9 +35,26 @@ import './scss/main.scss';
       container.innerHTML += postsTemplate(posts);
     };
 
-    // doDomThings();
-    // doRandomConsoleThings();
-    doHandlebarsThings(); // you don't have to use/unwrap the returned promise
+    const renderRandomLibrary = function() {
+      const locationsContainer = document.getElementById('locations');
+      const locations = [...locationsContainer.children];
+      const randomLoc = Math.floor(Math.random() * locations.length);
+
+      // Get something from the DOM at runtime (can't hard-code this into the bundle)
+      const location = locations[randomLoc].innerText;
+      
+      // Call the debug script (second dependency)
+      debug();
+      
+      // Find a place for the new element to go
+      const libraryContainer = document.createElement('div.random-library');
+      libraryContainer.innerHTML += libraryTemplate(`Random library: ${library(location)} in ${location}`);
+      locationsContainer.after(libraryContainer);
+    };
+
+    doModernThings();
+    renderPosts(); // you don't have to use/unwrap the returned promise
+    renderRandomLibrary();
   };
 
   window.addEventListener('load', main);
