@@ -28,15 +28,19 @@ module.exports = {
       },
       {
         test: /\.(hbs|handlebars)$/,
-        use: 'handlebars-loader',
+        use: [{
+          loader:'handlebars-loader',
+          options: {
+            // helperDirs: path.resolve(__dirname, 'src', 'templates', 'helpers'),
+          },
+        }],
       },
     ],
   },
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Barberino',
-      template: path.resolve(__dirname, 'src', 'index.hbs'),
+      title: 'Eva\'s webpack config',
     }),
     new CleanWebpackPlugin({
       // Recommendation to self: Use both cleanOnceBeforeBuildPatterns and cleanAfterEveryBuildPatterns with the same values, so all builds (first and watched) behave consistently

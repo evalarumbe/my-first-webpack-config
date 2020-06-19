@@ -12,13 +12,9 @@ export const library = function (location) {
   }
 };
 
-export const posts = function () {
-  async function getPosts() {
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-    const data = await response.json();
-    return data;
-  }
-
-  getPosts().then(retrievedPosts => console.log('Voilà your posts!', retrievedPosts));
+export const getPosts = async function () {
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await response.json();
+  return data.slice(0,3);
 };
 
