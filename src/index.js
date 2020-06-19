@@ -7,7 +7,7 @@ import { library, getPosts } from './some-library.js';
 import debug from './debug-script-for-some-library.js';
 
 // templates
-import postsTemplate from './templates/posts.hbs';
+import postsTemplate from './templates/partials/posts.hbs';
 
 // styles
 import './scss/main.scss';
@@ -40,8 +40,15 @@ import './scss/main.scss';
     };
 
     const doHandlebarsThings = async function() {
+      // get the data
       const posts = await getPosts();
-      const container = document.querySelector('body');
+
+      // find or create the parent element that will contain the data
+      const prevSibling = document.querySelector('#header');
+      const container = document.createElement('div.post-container');
+      prevSibling.after(container);
+
+      // place it in the container via template
       container.innerHTML += postsTemplate(posts);
     };
 

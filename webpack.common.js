@@ -41,6 +41,7 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       title: 'Eva\'s webpack config',
+      template: path.resolve(__dirname, 'src', 'templates', 'index.hbs'),
     }),
     new CleanWebpackPlugin({
       // Recommendation to self: Use both cleanOnceBeforeBuildPatterns and cleanAfterEveryBuildPatterns with the same values, so all builds (first and watched) behave consistently
