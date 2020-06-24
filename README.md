@@ -22,11 +22,12 @@ I built this after following some of the official guides:
 | `package-lock.json`       | Describe exactly which versions of dependencies are installed. |
 | `babel.config.json`       | Configure options specific to Babel, which is loaded via Webpack. See below for details. |
 | `webpack.dev.js`          | Configs that are only relevant in development (prioritize developer experience) |
-| `webpack.dev.js`          | Configs that are only relevant in production (prioritize user experience) |
+| `webpack.prod.js`         | Configs that are only relevant in production (prioritize user experience) |
 | `webpack.common.js`       | Configs that are common to both development and production environments |
+| `dist/`                   | Files to distribute to the browser. Webpack's output. Can also contain hand-coded files, like it used to in this repo before commit 92b4ff12bfe86bf20d330f03fa7f1fe27057d621. |
 | `src/`                    | Source code. Webpack's input. |
-| `dist/`                   | Files to distribute to the browser. Webpack's output. Can also contain hand-coded files. |
-| `dist/index.html`         | Hand-coded file in this example |
+| `src/scss/`               | Sass source files |
+| `src/templates/`          | Handlebars templates and helper functions |
 
 ## Packages used
 
@@ -62,6 +63,16 @@ In the Webpack config, you'll notice the pipeline runs from bottom to top, but h
 | `cssnano`                 | Plugin used by postcss. Minifies CSS. |
 | `css-loader`              | Enable CSS to be piped to `style-loader`. |
 | `mini-css-extract-plugin` | Generate static CSS files so users without JS still have a stylish time. |
+
+### HTML
+
+HTML is auto-generated based on Handlebars templates
+
+| Package                   | But why |
+| :------------------------ | :------ |
+| `handlebars`              | Compile Handlebars templates. |
+| `handlebars-loader`       | Load Handlebars templates through Webpack. |
+| `html-webpack-plugin`     | Generate HTML, optionally based on a Handlebars template. |
 
 ### Webpack
 
