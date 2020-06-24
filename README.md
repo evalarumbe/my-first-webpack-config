@@ -24,7 +24,7 @@ I built this after following some of the official guides:
 | `webpack.dev.js`          | Configs that are only relevant in development (prioritize developer experience) |
 | `webpack.prod.js`         | Configs that are only relevant in production (prioritize user experience) |
 | `webpack.common.js`       | Configs that are common to both development and production environments |
-| `dist/`                   | Files to distribute to the browser. Webpack's output. Can also contain hand-coded files, like it used to in this repo before commit 92b4ff12bfe86bf20d330f03fa7f1fe27057d621 |
+| `dist/`                   | Files to distribute to the browser. Webpack's output. Can also contain hand-coded files, like it used to in this repo before commit [92b4ff1](https://github.com/evalarumbe/my-first-webpack-config/commit/92b4ff12bfe86bf20d330f03fa7f1fe27057d621#diff-b9cfc7f2cdf78a7f4b91a753d10865a2) |
 | `src/`                    | Source code. Webpack's input. |
 | `src/scss/`               | Sass source files |
 | `src/templates/`          | Handlebars templates and helper functions |
