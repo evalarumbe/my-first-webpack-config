@@ -74,6 +74,13 @@ HTML is auto-generated based on Handlebars templates
 | `handlebars-loader`       | Load Handlebars templates through Webpack. |
 | `html-webpack-plugin`     | Generate HTML, optionally based on a Handlebars template. |
 
+### Assets
+
+| Package                   | But why |
+| :------------------------ | :------ |
+| `file-loader`             | Bundle images and other static assets. |
+| `copy-webpack-plugin`     | Copy assets from `src/` to `dist/`. |
+
 ### Webpack
 
 Webpack lets us bundle source files into distributed files according to rules set in the Webpack config files.

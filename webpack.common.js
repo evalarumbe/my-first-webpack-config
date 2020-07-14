@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,6 +11,12 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.(png|jpg|gif|svg|webp)$/,
+        use: [
+          'file-loader',
+        ],
+      },
       {
         test: /\.scss$/,
         use: [
@@ -38,6 +45,12 @@ module.exports = {
     ],
   },
   plugins: [
+    new CopyWebpackPlugin({
+      patterns: [{
+        from: path.resolve(__dirname, 'src', 'images'),
+        to: path.resolve(__dirname, 'dist', 'images'),
+      }]
+    }),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       title: 'Eva\'s webpack config',

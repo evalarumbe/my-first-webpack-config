@@ -13,6 +13,9 @@ import libraryTemplate from './templates/partials/random-library.hbs';
 // styles
 import './scss/main.scss';
 
+// images
+import './images/dog-importing-an-asset.jpg';
+
 (() => {
   const main = function () {
     const doModernThings = function() {
