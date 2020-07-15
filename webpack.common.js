@@ -1,5 +1,5 @@
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -14,9 +14,12 @@ module.exports = {
     rules: [
       {
         test: /\.(png|jpg|gif|svg|webp)$/,
-        use: [
-          'file-loader',
-        ],
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[contenthash].[ext]',
+          }
+        }],
       },
       {
         test: /\.scss$/,
@@ -36,12 +39,20 @@ module.exports = {
       },
       {
         test: /\.(hbs|handlebars)$/,
-        use: [{
-          loader:'handlebars-loader',
-          options: {
-            helperDirs: path.resolve(__dirname, 'src', 'templates', 'helpers'),
+        use: [
+          {
+            loader:'handlebars-loader',
+            options: {
+              helperDirs: path.resolve(__dirname, 'src', 'templates', 'helpers'),
+            },
           },
-        }],
+          {
+            loader: 'extract-loader'
+          },
+          {
+            loader: 'html-loader'
+          },
+        ],
       },
     ],
   },

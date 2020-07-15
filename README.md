@@ -73,13 +73,16 @@ HTML is auto-generated based on Handlebars templates
 | `handlebars`              | Compile Handlebars templates. |
 | `handlebars-loader`       | Load Handlebars templates through Webpack. |
 | `html-webpack-plugin`     | Generate HTML, optionally based on a Handlebars template. |
+| `extract-loader`          | Crawl HTML and convert relative paths between `src/` and `dist/`. |
+| `html-loader`             | Allows extract-loader to parse HTML. |
 
 ### Assets
+
+Two loaders from the HTML section, `extract-loader` and `html-loader`, are also necessary for handling assets.
 
 | Package                   | But why |
 | :------------------------ | :------ |
 | `file-loader`             | Bundle images and other static assets. |
-| `copy-webpack-plugin`     | Copy assets from `src/` to `dist/`. |
 
 ### Webpack
 
