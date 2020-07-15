@@ -46,12 +46,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new CopyWebpackPlugin({
-      patterns: [{
-        from: path.resolve(__dirname, 'src', 'images'),
-        to: path.resolve(__dirname, 'dist', 'images'),
-      }]
-    }),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       title: 'Eva\'s webpack config',
