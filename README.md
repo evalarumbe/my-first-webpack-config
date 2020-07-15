@@ -83,6 +83,7 @@ Two loaders from the HTML section, `extract-loader` and `html-loader`, are also 
 | Package                   | But why |
 | :------------------------ | :------ |
 | `file-loader`             | Bundle images and other static assets. |
+| `webpack.config.prod.js`  | A pre-build script to generate WebP images that can be used from Handlebars templates. The product of much research, experimentation, weeping and ultimately triumph. Details in the comments. |
 
 ### Webpack
 

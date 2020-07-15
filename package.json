@@ -5,6 +5,7 @@
   "repository": "github:evalarumbe/evas-webpack-config.git",
   "main": "./src/index.js",
   "scripts": {
+    "prebuild": "node webpack.config.prod.js",
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --config webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -27,6 +28,8 @@
     "handlebars-loader": "^1.7.1",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
+    "imagemin": "^7.0.1",
+    "imagemin-webp": "^6.0.0",
     "mini-css-extract-plugin": "^0.9.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
