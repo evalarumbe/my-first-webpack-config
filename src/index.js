@@ -1,14 +1,13 @@
 // Babel polyfills
-import 'core-js/stable'; // FIXME? On each build, Babel debug text says "Import of core-js was not found" (the error comes from other src files. I didn't think I had to import this for every file, just at the entry point like right here. What's going on? So far I'm not even using any core-js polyfills so haven't properly tested)
+import 'core-js/stable'; // FIXME? On each build, Babel debug text (set it to true to see) says "Import of core-js was not found" (the error comes from other src files. I didn't think I had to import this for every file, just at the entry point like right here. What's going on? So far I'm not even using any core-js polyfills so haven't properly tested). NOTE: If I import these 2 lines at the top of each js file, the warning stops (Maybe only the corejs line is relevant but the docs seem to recommend them together).
 import 'regenerator-runtime/runtime';
 
 // local scripts
-import { library, getPosts } from './some-library.js';
-import debug from './debug-script-for-some-library.js';
+import { getPosts, getRandomElement } from './library.js';
 
 // templates
 import postsTemplate from './templates/partials/posts.hbs';
-import libraryTemplate from './templates/partials/random-library.hbs';
+import activeThemeTemplate from './templates/partials/active-theme.hbs';
 
 // styles
 import './scss/main.scss';
@@ -18,46 +17,77 @@ import './images/dog-importing-an-asset.jpg';
 
 (() => {
   const main = function () {
-    const doModernThings = function() {
-      console.log('Do some more ES6 stuff with WeakSet');
-      const weakSetStuff = new WeakSet([]);
-      console.log(weakSetStuff);
-      console.log(`3 ** 2? ${3 ** 2}`);
-    };
 
-    const renderPosts = async function() {
+    // TODO: make more deliberate choices about which funcs get arrows
+
+    // TODO: Is there somewhere better to render things? Move these into helpers?
+    const renderPosts = async () => {
       // get the data
       const posts = await getPosts();
 
       // find or create the parent element that will contain the data
-      const prevSibling = document.querySelector('#header');
-      const container = document.createElement('div.post-container');
-      prevSibling.after(container);
+      const prevSibling = document.querySelector('#themes');
+      const postsContainer = document.createElement('div.posts-container');
+      prevSibling.after(postsContainer);
 
       // place it in the container via template
-      container.innerHTML += postsTemplate(posts);
+      postsContainer.innerHTML += postsTemplate(posts);
     };
 
-    const renderRandomLibrary = function() {
-      const locationsContainer = document.getElementById('locations');
-      const locations = [...locationsContainer.children];
-      const randomLoc = Math.floor(Math.random() * locations.length);
+    const setTheme = () => {
+      const themeOptions = [...document.querySelectorAll('#themes input[type=radio]')];
 
-      // Get something from the DOM at runtime (can't hard-code this into the bundle)
-      const location = locations[randomLoc].innerText;
-      
-      // Call the debug script (second dependency)
-      debug();
-      
-      // Find a place for the new element to go
-      const libraryContainer = document.createElement('div.random-library');
-      libraryContainer.innerHTML += libraryTemplate(`Random library: ${library(location)} in ${location}`);
-      locationsContainer.after(libraryContainer);
+      const applyThemeStyles = (activeTheme) => {
+      // cases must match radio option ids in the DOM
+        switch (activeTheme) {
+          case 'midnight':
+            // TODO: set styles to midnight theme
+            break;
+          default:
+            // TODO: set styles to daylight theme
+            break;
+        }
+      };
+
+      const updateTheme = (theme) => {
+        const updateUI = () => {
+          const activeThemeContainer = document.getElementById('active-theme');
+          activeThemeContainer.innerHTML = activeThemeTemplate(`Active theme: ${theme}`);
+        };
+
+        applyThemeStyles(theme);
+        updateUI();
+      };
+
+      const initUI = () => {
+        const handleSelectTheme = function(event) {
+          updateTheme(event.target.id);
+          // TODO: Does a11y need us to explicitly show a state change in the DOM, or connect the 'active theme' text to the radio fieldset with something like aria-label?
+        };
+        
+        // listen for the user to update the theme
+        themeOptions.forEach(radioInput => {
+          // Note: onchange fires when a radio button is selected, except in <IE9 where it fires when a radio button is UNselected
+          // TODO: Consider adding <IE9 support
+          radioInput.addEventListener('change', handleSelectTheme);
+        });
+      };
+
+      const initTheme = () => {
+        // if no options are checked (selected), check a random one
+        if (!themeOptions.filter(radio => radio.checked).length) {
+          const randomOption = getRandomElement(themeOptions);
+          randomOption.checked = true; // display checked state to user
+          randomOption.dispatchEvent(new Event('change')); // run the handler
+        }
+      };
+
+      initUI();
+      initTheme();
     };
 
-    doModernThings();
     renderPosts(); // you don't have to use/unwrap the returned promise
-    renderRandomLibrary();
+    setTheme();
   };
 
   window.addEventListener('load', main);
