@@ -5,8 +5,10 @@
   "repository": "github:evalarumbe/evas-webpack-config.git",
   "main": "./src/index.js",
   "scripts": {
-    "prebuild": "node webpack.config.prod.js",
+    "webp": "node webpack.config.prod.js",
+    "prebuild": "npm run webp",
     "build": "webpack --config webpack.prod.js",
+    "prestart": "npm run webp",
     "start": "webpack-dev-server --config webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

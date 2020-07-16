@@ -12,7 +12,6 @@ const webp = require('imagemin-webp');
 // This allows them to be used from within Handlebars templates
 // Thanks to https://stackoverflow.com/questions/58827843/webpack-how-to-convert-jpg-png-to-webp-via-image-webpack-loader
 
-// FIXME: intermittently fails to generate WebP file on dev server
 imagemin( ['src/images/*.{jpg,png}'], {
     destination: 'src/images',
     plugins: [
