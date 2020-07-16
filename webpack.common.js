@@ -1,11 +1,9 @@
 const path = require('path');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  // context: path.resolve(__dirname, 'src'), // Look in src for all paths. Docs recommend including this.
   context: path.resolve(__dirname), // Look in project root for all paths. Docs recommend including a context.
   entry: {
     main:  path.resolve(__dirname, 'src', './index.js'),
