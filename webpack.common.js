@@ -62,17 +62,7 @@ module.exports = {
       title: 'Eva\'s webpack config',
       template: path.resolve(__dirname, 'src', 'templates', 'index.hbs'),
     }),
-    new CleanWebpackPlugin({
-      // Recommendation to self: Use both cleanOnceBeforeBuildPatterns and cleanAfterEveryBuildPatterns with the same values, so all builds (first and watched) behave consistently
-      cleanOnceBeforeBuildPatterns: [ // on first build, delete everything (*) except (!) html (*.html)
-        '*', // must have a positive pattern here because a negative alone doesn't work
-        '!*.html', // negative means "remove this from matching results of first pattern"
-      ],
-      cleanAfterEveryBuildPatterns: [ // on watched builds, delete everything except html
-        '*',
-        '!*.html',
-      ],
-    }),
+    new CleanWebpackPlugin(),
   ],
   optimization: { // code splitting without duplicates
     splitChunks: {
