@@ -26,9 +26,9 @@ import './images/dog-importing-an-asset.jpg';
       const posts = await getPosts();
 
       // find or create the parent element that will contain the data
-      const prevSibling = document.querySelector('#themes');
+      const parent = document.querySelector('body');
       const postsContainer = document.createElement('div.posts-container');
-      prevSibling.after(postsContainer);
+      parent.appendChild(postsContainer);
 
       // place it in the container via template
       postsContainer.innerHTML += postsTemplate(posts);
