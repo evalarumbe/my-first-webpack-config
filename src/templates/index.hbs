@@ -7,7 +7,6 @@
 </head>
 <body>
   {{> './partials/header'}}
-  <p>(party in the console)</p>
   <section id="themes">
     <h2>Themes</h2>
       <p id="active-theme"></p>
@@ -29,9 +28,206 @@
         </fieldset>
       </form>
   </section>
-  <picture>
-    <source type="image/webp" srcset="../images/dog-importing-an-asset.webp">
-    <img src="../images/dog-importing-an-asset.jpg" alt="A dog carrying a flower just long enough for the photo before nearly eating it">
-  </picture>
+  <main>
+    <p>This Webpack config does all sorts of neat tricks and outputs cross-browser-compatible HTML, CSS and JS. It can&hellip;</p>
+    
+    <section id="import-assets">
+      <h2>import assets</h2>
+      <figure>
+        <picture>
+          <source type="image/webp" srcset="../images/dog-importing-an-asset.webp">
+          <img src="../images/dog-importing-an-asset.jpg" alt="A dog carrying a flower just long enough for the photo before nearly eating it" width="300" height="300">
+        </picture>
+        <figcaption>A dog importing an asset<br><cite><a href="https://unsplash.com/photos/2s6ORaJY6gI" rel="noopener" target="_blank">Celine Sayuri Tagami</a></cite></figcaption>
+      </figure>
+    </section>
+
+    <section id="fetch-data">
+      <h2>fetch data</h2>
+      <p>from a distant galaxy where everybody speaks Lorem Ipsum, sit it on Handlebars and generate HTML</p>
+
+      <figure>
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AvbUkBG0yrc?start=65" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <figcaption>"Don't crash, please!"</figcaption>
+      </figure>
+
+      <div id="posts-container"></div>
+    </section>
+
+    <section id="take-your-sass">
+      <h2>take your sass</h2>
+      <p>and hand it back to you with prefixes</p>
+
+      <p class="todo">TODO: GIF GOES HERE</p>
+      <p class="todo">TODO: Mabye this is a good time for a helper to decide whether to show a video or a still: https://www.scottohara.me/note/2019/07/12/reduced-motion-video.html</p>
+      
+      <div class="two-col-container">
+
+        <div class="left-col">
+          <h3>Input</h3>
+          <p>SCSS</p>
+          <pre><code class="todo">
+            TODO:
+            - Add code
+            - Syntax highlighting
+          </code></pre>
+        </div><!-- .left-col -->
+
+        <div class="right-col">
+          <h3>Output</h3>
+          <p>Auto-prefixed CSS</p>
+          <pre><code class="todo">
+            TODO:
+            - Add code
+            - Syntax highlighting
+          </code></pre>
+        </div><!-- .right-col -->
+      </div><!-- .two-col-container -->
+    </section>
+
+    <p>It also gives JavaScript a good workout to keep it light and nimble. We're talking&hellip;</p>
+
+    <section id="tree-shaking">
+      <h2>tree shaking</h2>
+      <figure>
+        <picture>
+          <source type="image/webp" srcset="../images/tree-shaking.webp">
+          <img src="../images/tree-shaking.jpg" alt="Sparse trees in the sunshine" width="300" height="300">
+        </picture>
+        <figcaption>It's <em>JavaScript: The Good Parts</em> all over again<br><cite><a href="https://unsplash.com/photos/lEeIPHGACQ0" rel="noopener" target="_blank">Henry Desro</a></cite></figcaption>
+      </figure>
+    </section>
+
+    <section id="transpiling">
+      <h2>transpiling</h2>
+
+      <figure>
+        <div class="two-col-container">
+
+          <div class="left-col">
+            <figure>
+              <picture>
+                <source type="image/webp" srcset="../images/transpile-modern.webp">
+                <img src="../images/transpile-modern.jpg" alt="Crinkle-cut french fries" width="600" height="374">
+              </picture>
+              <figcaption>Modern<br><cite><a href="https://unsplash.com/photos/eeZvhg3FAEM" rel="noopener" target="_blank">bckfwd</a></cite></figcaption>
+            </figure>
+          </div><!-- .left-col -->
+
+          <div class="right-col">
+            <figure>
+              <picture>
+                <source type="image/webp" srcset="../images/transpile-classic.webp">
+                <img src="../images/transpile-classic.jpg" alt="Rough-cut french fries" width="600" height="374">
+              </picture>
+              <figcaption>Classic<br><cite><a href="https://unsplash.com/photos/R9eP-0I96qo" rel="noopener" target="_blank">Sahand Babali</a></cite></figcaption>
+            </figure>
+          </div><!-- .right-col -->
+        </div><!-- .two-col-container -->
+        <figcaption>Same same but different</figcaption>
+      </figure>
+
+      <div class="two-col-container">
+
+        <div class="left-col">
+          <h3>Input</h3>
+          <p>modern JS</p>
+          <pre><code>
+            const random = (array) => {
+              const i = Math.floor(Math.random() * array.length);
+              return array[i];
+            };
+
+            const counterparts = ['potato', 'JavaScript'];
+
+            console.log(`At the end of the day it's all just ${random(counterparts)}`);
+          </code></pre>
+        </div><!-- .left-col -->
+
+        <div class="right-col">
+          <h3>Output</h3>
+          <p>cross-browser-compatible JS</p>
+          <pre><code>
+            "use strict";
+
+            var random = function random(array) {
+              var i = Math.floor(Math.random() * array.length);
+              return array[i];
+            };
+
+            var counterparts = ['potato', 'JavaScript'];
+            console.log("At the end of the day it's all just ".concat(random(counterparts)));
+          </code></pre>
+        </div><!-- .right-col -->
+      </div><!-- .two-col-container -->
+    </section>
+
+    <section id="bundle-splitting">
+      <h2>bundle splitting</h2>
+      <figure>
+        <picture>
+          <source type="image/webp" srcset="../images/bundle-splitting.webp">
+          <img src="../images/bundle-splitting.jpg" alt="Little bundles being wrapped in brown paper" width="300" height="300">
+        </picture>
+        <figcaption>One at a time<br><cite><a href="https://unsplash.com/photos/6wsK-cceWug" rel="noopener" target="_blank">Annie Spratt</a></cite></figcaption>
+      </figure>
+    </section>
+
+    <section id="lazy-loading">
+      <h2>lazy loading</h2>
+      <figure>
+        <picture>
+          <source type="image/webp" srcset="../images/lazy-loading.webp">
+          <img src="../images/lazy-loading.jpg" alt="An adult sloth carrying a baby sloth in no particular hurry." width="300" height="300">
+        </picture>
+        <figcaption>Not a sin, just misunderstood<br><cite><a href="https://unsplash.com/photos/uX2w48eXXqQ" rel="noopener" target="_blank">Roger Burkhard</a></cite></figcaption>
+      </figure>
+    </section>
+    
+    <section id="dev-prod">
+      <h2>split configs per environment</h2>
+
+      <div class="two-col-container">
+
+        <div class="left-col">
+          <figure>
+            <picture>
+              <source type="image/webp" srcset="../images/development-env.webp">
+              <img src="../images/development-env.jpg" alt="A race car speeding along a track" width="600" height="374">
+            </picture>
+            <figcaption>Development<br><cite><a href="https://unsplash.com/photos/RQ_bIg69-EM" rel="noopener" target="_blank">Nicolas Peyrol</a></cite></figcaption>
+          </figure>
+        </div><!-- .left-col -->
+
+        <div class="right-col">
+          <figure>
+            <picture>
+              <source type="image/webp" srcset="../images/production-env.webp">
+              <img src="../images/production-env.jpg" alt="A camper van ready for anything" width="600" height="374">
+            </picture>
+            <figcaption>Production<br><cite><a href="https://unsplash.com/photos/iVXfOilGYHA" rel="noopener" target="_blank">Caleb George</a></cite></figcaption>
+          </figure>
+        </div><!-- .right-col -->
+      </div><!-- .two-col-container -->
+    </section>
+
+    <p>All that, and it had the good sense to only break in hilarious and non-threatening ways along the journey.</p>
+    <section id="hilarious">
+      <figure>
+        <iframe src="https://giphy.com/embed/Yxoeu3U5wVYVG" width="480" height="252" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        <figcaption>Historical footage of this repo under construction <a href="https://giphy.com/gifs/kid-fear-worst-Yxoeu3U5wVYVG">via GIPHY</a></figcaption>
+      </figure>
+      
+      <blockquote>
+        <p>"I am a toddler screaming gleefully in the ruins of my broken Webpack config."</p>
+        <cite>&mdash;excerpt from the author's notes</cite>
+      </blockquote>
+
+      <p>What an adventure!</p>
+    </section>
+
+    <p>Please fork, enjoy and be merry.</p>
+    <p class="todo">Feedback encouraged! TODO: link to my site or something</p>
+  </main>
 </body>
 </html>

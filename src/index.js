@@ -21,18 +21,6 @@ import './images/dog-importing-an-asset.jpg';
     // TODO: make more deliberate choices about which funcs get arrows
 
     // TODO: Is there somewhere better to render things? Move these into helpers?
-    const renderPosts = async () => {
-      // get the data
-      const posts = await getPosts();
-
-      // find or create the parent element that will contain the data
-      const parent = document.querySelector('body');
-      const postsContainer = document.createElement('div.posts-container');
-      parent.appendChild(postsContainer);
-
-      // place it in the container via template
-      postsContainer.innerHTML += postsTemplate(posts);
-    };
 
     const setTheme = () => {
       const themeOptions = [...document.querySelectorAll('#themes input[type=radio]')];
@@ -74,7 +62,9 @@ import './images/dog-importing-an-asset.jpg';
       };
 
       const initTheme = () => {
-        // if no options are checked (selected), check a random one
+        // if no options are checked (selected), 
+        // TODO: check if the user has a preference with matchMedia() https://web.dev/prefers-color-scheme
+        // otherwise, check a random one
         if (!themeOptions.filter(radio => radio.checked).length) {
           const randomOption = getRandomElement(themeOptions);
           randomOption.checked = true; // display checked state to user
@@ -86,8 +76,19 @@ import './images/dog-importing-an-asset.jpg';
       initTheme();
     };
 
-    renderPosts(); // you don't have to use/unwrap the returned promise
+    const renderPosts = async () => {
+      // get the data
+      const posts = await getPosts();
+
+      // find or create the parent element that will contain the data
+      const postsContainer = document.querySelector('#posts-container');
+
+      // place it in the container via template
+      postsContainer.innerHTML += postsTemplate(posts);
+    };
+
     setTheme();
+    renderPosts(); // you don't have to use/unwrap the returned promise
   };
 
   window.addEventListener('load', main);
