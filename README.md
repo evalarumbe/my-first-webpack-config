@@ -70,11 +70,8 @@ HTML is auto-generated based on Handlebars templates
 
 | Package                   | But why |
 | :------------------------ | :------ |
-| `handlebars`              | Compile Handlebars templates. |
-| `handlebars-loader`       | Load Handlebars templates through Webpack. |
-| `html-webpack-plugin`     | Generate HTML, optionally based on a Handlebars template. |
-| `extract-loader`          | Crawl HTML and convert relative paths between `src/` and `dist/`. |
-| `html-loader`             | Allows extract-loader to parse HTML. |
+| `html-webpack-plugin`     | Generate HTML with relative paths converted between `src/` and `dist/` |
+| `html-loader`             | Parses HTML so we can hand code some to start from. |
 
 ### Assets
 

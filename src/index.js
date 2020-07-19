@@ -5,15 +5,14 @@ import 'regenerator-runtime/runtime';
 // local scripts
 import { getPosts, getRandomElement } from './library.js';
 
-// templates
-import postsTemplate from './templates/partials/posts.hbs';
-import activeThemeTemplate from './templates/partials/active-theme.hbs';
+// document
+import './index.html';
 
 // styles
 import './scss/main.scss';
 
 // images
-import './images/dog-importing-an-asset.jpg';
+import './images/dog-importing-an-asset.jpg'; // TODO: is this necessary? other images were working fine without this
 
 (() => {
   const main = function () {
@@ -40,7 +39,7 @@ import './images/dog-importing-an-asset.jpg';
       const updateTheme = (theme) => {
         const updateUI = () => {
           const activeThemeContainer = document.getElementById('active-theme');
-          activeThemeContainer.innerHTML = activeThemeTemplate(`Active theme: ${theme}`);
+          activeThemeContainer.innerHTML = `Active theme: ${theme}`;
         };
 
         applyThemeStyles(theme);
@@ -83,12 +82,31 @@ import './images/dog-importing-an-asset.jpg';
       // find or create the parent element that will contain the data
       const postsContainer = document.querySelector('#posts-container');
 
-      // place it in the container via template
-      postsContainer.innerHTML += postsTemplate(posts);
+      // create the list
+      const postsList = document.createElement('ul');
+      postsList.id = 'posts';
+      
+      // create list items
+      posts.forEach(post => {
+        const postItem = document.createElement('li');
+        const heading = document.createElement('h3');
+        const paragraph = document.createElement('p');
+        
+        heading.innerHTML = `${post.id}: ${post.title}`;
+        paragraph.innerHTML = post.body;
+        
+        postItem.appendChild(heading);
+        postItem.appendChild(paragraph);
+        
+        postsList.appendChild(postItem);
+      });
+      
+      // place the list in the container
+      postsContainer.appendChild(postsList);
     };
 
     setTheme();
-    renderPosts(); // you don't have to use/unwrap the returned promise
+    renderPosts();
   };
 
   window.addEventListener('load', main);

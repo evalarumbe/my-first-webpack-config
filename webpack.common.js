@@ -36,21 +36,8 @@ module.exports = {
         ],
       },
       {
-        test: /\.(hbs|handlebars)$/,
-        use: [
-          {
-            loader:'handlebars-loader',
-            options: {
-              helperDirs: path.resolve(__dirname, 'src', 'templates', 'helpers'),
-            },
-          },
-          {
-            loader: 'extract-loader'
-          },
-          {
-            loader: 'html-loader'
-          },
-        ],
+        test: /\.(htm|html)$/,
+        loader: 'html-loader',
       },
     ],
   },
@@ -58,7 +45,7 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       title: 'Eva\'s webpack config',
-      template: path.resolve(__dirname, 'src', 'templates', 'index.hbs'),
+      template: path.resolve(__dirname, 'src', 'index.html'),
     }),
     new CleanWebpackPlugin(),
   ],

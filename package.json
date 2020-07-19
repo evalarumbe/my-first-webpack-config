@@ -5,10 +5,7 @@
   "repository": "github:evalarumbe/evas-webpack-config.git",
   "main": "./src/index.js",
   "scripts": {
-    "webp": "node webpack.config.prod.js",
-    "prebuild": "npm run webp",
     "build": "webpack --config webpack.prod.js",
-    "prestart": "npm run webp",
     "start": "webpack-dev-server --config webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,11 +20,8 @@
     "core-js": "^3.6.5",
     "css-loader": "^3.5.3",
     "cssnano": "^4.1.10",
-    "extract-loader": "^5.1.0",
     "fibers": "^5.0.0",
     "file-loader": "^6.0.0",
-    "handlebars": "^4.7.6",
-    "handlebars-loader": "^1.7.1",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
     "imagemin": "^7.0.1",

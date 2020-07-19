@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{htmlWebpackPlugin.options.title}}</title>
+  <title>My First Webpack Config</title>
 </head>
 <body>
-  {{> './partials/header'}}
+  <header id="header">
+    <h1>My First Webpack Config</h1>
+  </header>
   <section id="themes">
     <h2>Themes</h2>
       <p id="active-theme"></p>
       <form action="" method="get">
         <fieldset>
-          {{!-- radio option ids must match cases in applyThemeStyles --}}
+          <!-- radio option ids must match cases in applyThemeStyles -->
           <ul>
             <li>
               <label for="daylight">Daylight 
@@ -35,8 +37,8 @@
       <h2>import assets</h2>
       <figure>
         <picture>
-          <source type="image/webp" srcset="../images/dog-importing-an-asset.webp">
-          <img src="../images/dog-importing-an-asset.jpg" alt="A dog carrying a flower just long enough for the photo before nearly eating it" width="300" height="300">
+          <source type="image/webp" srcset="./images/dog-importing-an-asset.webp">
+          <img src="./images/dog-importing-an-asset.jpg" alt="A dog carrying a flower just long enough for the photo before nearly eating it" width="300" height="300">
         </picture>
         <figcaption>A dog importing an asset<br><cite><a href="https://unsplash.com/photos/2s6ORaJY6gI" rel="noopener" target="_blank">Celine Sayuri Tagami</a></cite></figcaption>
       </figure>
@@ -91,8 +93,8 @@
       <h2>tree shaking</h2>
       <figure>
         <picture>
-          <source type="image/webp" srcset="../images/tree-shaking.webp">
-          <img src="../images/tree-shaking.jpg" alt="Sparse trees in the sunshine" width="300" height="300">
+          <source type="image/webp" srcset="./images/tree-shaking.webp">
+          <img src="./images/tree-shaking.jpg" alt="Sparse trees in the sunshine" width="300" height="300">
         </picture>
         <figcaption>It's <em>JavaScript: The Good Parts</em> all over again<br><cite><a href="https://unsplash.com/photos/lEeIPHGACQ0" rel="noopener" target="_blank">Henry Desro</a></cite></figcaption>
       </figure>
@@ -107,8 +109,8 @@
           <div class="left-col">
             <figure>
               <picture>
-                <source type="image/webp" srcset="../images/transpile-modern.webp">
-                <img src="../images/transpile-modern.jpg" alt="Crinkle-cut french fries" width="600" height="374">
+                <source type="image/webp" srcset="./images/transpile-modern.webp">
+                <img src="./images/transpile-modern.jpg" alt="Crinkle-cut french fries" width="600" height="374">
               </picture>
               <figcaption>Modern<br><cite><a href="https://unsplash.com/photos/eeZvhg3FAEM" rel="noopener" target="_blank">bckfwd</a></cite></figcaption>
             </figure>
@@ -117,8 +119,8 @@
           <div class="right-col">
             <figure>
               <picture>
-                <source type="image/webp" srcset="../images/transpile-classic.webp">
-                <img src="../images/transpile-classic.jpg" alt="Rough-cut french fries" width="600" height="374">
+                <source type="image/webp" srcset="./images/transpile-classic.webp">
+                <img src="./images/transpile-classic.jpg" alt="Rough-cut french fries" width="600" height="374">
               </picture>
               <figcaption>Classic<br><cite><a href="https://unsplash.com/photos/R9eP-0I96qo" rel="noopener" target="_blank">Sahand Babali</a></cite></figcaption>
             </figure>
@@ -166,8 +168,8 @@
       <h2>bundle splitting</h2>
       <figure>
         <picture>
-          <source type="image/webp" srcset="../images/bundle-splitting.webp">
-          <img src="../images/bundle-splitting.jpg" alt="Little bundles being wrapped in brown paper" width="300" height="300">
+          <source type="image/webp" srcset="./images/bundle-splitting.webp">
+          <img src="./images/bundle-splitting.jpg" alt="Little bundles being wrapped in brown paper" width="300" height="300">
         </picture>
         <figcaption>One at a time<br><cite><a href="https://unsplash.com/photos/6wsK-cceWug" rel="noopener" target="_blank">Annie Spratt</a></cite></figcaption>
       </figure>
@@ -177,8 +179,8 @@
       <h2>lazy loading</h2>
       <figure>
         <picture>
-          <source type="image/webp" srcset="../images/lazy-loading.webp">
-          <img src="../images/lazy-loading.jpg" alt="An adult sloth carrying a baby sloth in no particular hurry." width="300" height="300">
+          <source type="image/webp" srcset="./images/lazy-loading.webp">
+          <img src="./images/lazy-loading.jpg" alt="An adult sloth carrying a baby sloth in no particular hurry." width="300" height="300">
         </picture>
         <figcaption>Not a sin, just misunderstood<br><cite><a href="https://unsplash.com/photos/uX2w48eXXqQ" rel="noopener" target="_blank">Roger Burkhard</a></cite></figcaption>
       </figure>
@@ -192,8 +194,8 @@
         <div class="left-col">
           <figure>
             <picture>
-              <source type="image/webp" srcset="../images/development-env.webp">
-              <img src="../images/development-env.jpg" alt="A race car speeding along a track" width="600" height="374">
+              <source type="image/webp" srcset="./images/development-env.webp">
+              <img src="./images/development-env.jpg" alt="A race car speeding along a track" width="600" height="374">
             </picture>
             <figcaption>Development<br><cite><a href="https://unsplash.com/photos/RQ_bIg69-EM" rel="noopener" target="_blank">Nicolas Peyrol</a></cite></figcaption>
           </figure>
@@ -202,8 +204,8 @@
         <div class="right-col">
           <figure>
             <picture>
-              <source type="image/webp" srcset="../images/production-env.webp">
-              <img src="../images/production-env.jpg" alt="A camper van ready for anything" width="600" height="374">
+              <source type="image/webp" srcset="./images/production-env.webp">
+              <img src="./images/production-env.jpg" alt="A camper van ready for anything" width="600" height="374">
             </picture>
             <figcaption>Production<br><cite><a href="https://unsplash.com/photos/iVXfOilGYHA" rel="noopener" target="_blank">Caleb George</a></cite></figcaption>
           </figure>
