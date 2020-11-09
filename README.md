@@ -1,5 +1,6 @@
-![Webpack Logo](./webpack-logo.gif  )
 # Eva's Webpack Config
+
+![Webpack Logo](./webpack-logo.gif  )
 
 This [Webpack](https://webpack.js.org/) config is an ongoing work in progress. [Feedback is always welcome](mailto:evalarumbe@gmail.com).
 
@@ -27,7 +28,6 @@ I built this after following some of the official guides:
 | `dist/`                   | Files to distribute to the browser. Webpack's output. Can also contain hand-coded files, like it used to in this repo before commit [92b4ff1](https://github.com/evalarumbe/my-first-webpack-config/commit/92b4ff12bfe86bf20d330f03fa7f1fe27057d621#diff-b9cfc7f2cdf78a7f4b91a753d10865a2) |
 | `src/`                    | Source code. Webpack's input. |
 | `src/scss/`               | Sass source files |
-| `src/templates/`          | Handlebars templates and helper functions |
 
 ## Packages used
 
@@ -44,7 +44,7 @@ I built this after following some of the official guides:
 | Package                   | But why |
 | :------------------------ | :------ |
 | `babel-loader`            | Enable Webpack to run `@babel/core`. |
-| `@babel/core`             | This is Babel! But I'm useless without plugins or presets (which are collections of plugins). |
+| `@babel/core`             | This is Babel! But it's useless without plugins or presets (which are collections of plugins). |
 | `@babel/preset-env`       | Preset based on [caniuse](https://caniuse.com/). I decide which syntax to change depending on the project's supported browsers. |
 | `core-js`                 | Provide polyfills for new js features that add functionality (more than just new syntax). |
 
@@ -66,7 +66,7 @@ In the Webpack config, you'll notice the pipeline runs from bottom to top, but h
 
 ### HTML
 
-HTML is auto-generated based on Handlebars templates
+In this project, hand-coded HTML in `src/` gets processed and output to `dist/`.
 
 | Package                   | But why |
 | :------------------------ | :------ |
