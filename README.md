@@ -12,6 +12,10 @@ I built this after following some of the official guides:
 - [Development](https://webpack.js.org/guides/development/)
 - [Hot Module Replacement](https://webpack.js.org/guides/hot-module-replacement/)
 - [Production](https://webpack.js.org/guides/production/)
+- [Code splitting](https://v4.webpack.js.org/guides/code-splitting/) (to the end of the SplitChunksPlugin section)
+
+Todo:
+- [Lazy loading](https://v4.webpack.js.org/guides/lazy-loading/)
 - [Tree Shaking](https://webpack.js.org/guides/tree-shaking/)
 
 ## File structure
@@ -98,6 +102,8 @@ Notes-to-self on things things discovered through experimentation and research. 
 
 ### Things I learned about Webpack
 
+#### How to register dependencies
+
 If `src/index.js` has a dependency, it's enough to:
 
 - include the dependency file in `src/`
@@ -107,6 +113,20 @@ Therefore it's not necessary to:
 
 - add the dependency to `webpack.config.js`
 - add the dependency to `dist/index.html`
+
+#### How to split code for cache optimization
+
+In `webpack.common.js`, `optimization.splitChunks` is also known as the [SplitChunksPlugin](https://v4.webpack.js.org/plugins/split-chunks-plugin/), and is recommended for Webpack v4, which this project uses.
+
+Without code splitting, separate entry points would each load their own version of dependencies (e.g. if we have 2 entry point files that each depend on lodash, we get 2 bundles per 1 sad user, because each of them contains lodash).
+
+To do code splitting in Webpack v4, we use SplitChunksPlugin, which is an improvement on CommonChunkPlugin from Webpack v3: CommonChunkPlugin would extract common dependencies to a new file (a chunk). Since we are likely to update third-party dependencies less frequently than we update our own code, these dependencies could be cached longer, and the user would only need to download our lighter custom app code whenever we make an update, not all of the bundled third-party deps.
+
+Still, this v3 architecture meant that if one of these deps in the cached Common Chunk file has to be updated, then all of the deps would have to be updated.
+
+When configured the general recommended way `optimization.splitChunks { chunks: 'all' }` SplitChunksPlugin seems to behave similarly to CommonChunkPlugin, but it can be additionally configured to allow each of these chunked dependencies to be split up and cached individually, offering more flexibility / fine control for the developer to selectively update dependencies, while minimizing download time for the user.
+
+*Thank you to this YouTuber: [Step By Step: Split Chunks Plugin #9 - Webpack 4](https://www.youtube.com/watch?v=sX_6ezKfvn0&ab_channel=ExcitonInteractiveLLC)*
 
 ### Things I learned about Babel
 

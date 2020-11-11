@@ -50,7 +50,8 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
   ],
-  optimization: { // code splitting without duplicates
+  // SplitChunksPlugin
+  optimization: {
     splitChunks: {
       chunks: 'all',
     }
