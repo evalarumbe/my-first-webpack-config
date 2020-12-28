@@ -15,7 +15,7 @@ This config is an ongoing work in progress, built as a self-guided exercise to l
 
 I chip away at this repo between projects, so a lot of things are broken. I wouldn't recommend that anybody run this as it stands.
 
-**At the moment its main function is documentation - so this Readme is the best bit.**
+**At the moment this repo's main function is documentation - so this Readme is the best bit.**
 
 The audience at the moment is mostly just myself (for when I pick this back up having forgotten everything), but I'm incrementally cleaning it up so it can be more useful to others someday.
 
