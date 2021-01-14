@@ -8,6 +8,8 @@
     "webp": "node webpack.config.prod.js",
     "prebuild": "npm run webp",
     "build": "webpack --config webpack.prod.js",
+    "prebuild-dev": "npm run webp",
+    "build-dev": "webpack --config webpack.dev.js",
     "prestart": "npm run webp",
     "start": "webpack-dev-server --config webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
