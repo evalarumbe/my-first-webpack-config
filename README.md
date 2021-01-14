@@ -65,7 +65,7 @@ The audience at the moment is mostly just myself (for when I pick this back up h
 | `babel-loader`            | Enable Webpack to run `@babel/core`. |
 | `@babel/core`             | This is Babel! But it's useless without plugins or presets (which are collections of plugins). |
 | `@babel/preset-env`       | Preset based on [caniuse](https://caniuse.com/). I decide which syntax to change depending on the project's supported browsers. |
-| `core-js`                 | Provide polyfills for new js features that add functionality (more than just new syntax). |
+| `core-js`                 | Provide polyfills for new js features that add functionality (more than just new syntax). ** Install as a _dependency_, not a devDependency** |
 
 ### CSS
 
@@ -147,8 +147,38 @@ When configured the general recommended way `optimization.splitChunks { chunks: 
 
 See `babel.config.json`. Since comments aren't supported in JSON, I'll explain here.
 
-Babel has an optional `debug` flag that shows detailed output in the CLI when building. Handy for when Babel isn't playing ball.
+Babel has an optional `debug` flag that shows detailed output in the CLI when building (handy to see which decisions Babel is making under the hood).
 
 - `@babel/core` does nothing alone. It needs plugins and presets.
-- `@babel/preset-env` is one such preset. It does nothing alone. It needs `useBuiltIns` to be set (by default it's set to `false`. It can be set to either `usage` or `entry`).
-- Setting `useBuiltIns` to `entry` is working beautifully, and outputs a smaller bundle than `usage`. I haven't pinpointed what the difference is, but `entry` is recommended in the [preset-env docs](https://babeljs.io/docs/en/babel-preset-env) so that'll do.
+- `@babel/preset-env` is one such preset. It does nothing alone. It needs `useBuiltIns` to be set (by default it's set to `false`. It can be set to either `usage` or `entry`, more detail below).
+- `useBuiltIns` needs the corejs version to be specified ([minor version recommended](https://youtu.be/YXtQms2msZQ?t=1075), though I couldn't find that in the docs).
+
+- Setting `useBuiltIns` to `entry` means Babel will decide which polyfills to use based on which import statements it finds in the entry file. This means we need to manually run:
+```console
+$ npm install -S <packages to be imported>
+```
+
+  e.g. To support Promises:
+  ```
+  $npm i --save regenerator-runtime core-js
+  ```
+
+  Once only, in index.js
+  ```js
+  import 'regenerator-runtime';
+  import 'core-js/stable';
+  ```
+
+- Setting `useBuiltIns` to `usage` is [recommended by this YouTuber](https://www.youtube.com/watch?v=YXtQms2msZQ&ab_channel=SwashbucklingwithCode). Babel will look through project files and browserslist config to automatically determine which polyfills to include, so we DON'T need to manually install or import packages as above . [This is only suitable for projects using a bundler](https://babeljs.io/docs/en/babel-preset-env#usebuiltins-usage) (like webpack here, because it's configured to load each dependency only once), but not in standalone non-bundled projects.
+
+References:
+- [preset-env docs](https://babeljs.io/docs/en/babel-preset-env) - Babel documentation
+- [How to get polyfills with Babel 7 and Webpack](https://www.youtube.com/watch?v=YXtQms2msZQ&ab_channel=SwashbucklingwithCode) - YouTube
+- [Thread clarifying the Babel docs (npm i core-js regenerator-runtime)](https://stackoverflow.com/questions/55748204/babel-7-x-cant-resolve-core-js-modules-es-array-concat) - Stack Overflow
+
+<!-- TODO: [Try different bundle analyzers](https://v4.webpack.js.org/guides/code-splitting/#bundle-analysis) -->
+
+<!-- TODO: [Lessons Learned From a Year of Fighting With Webpack and Babel](https://levelup.gitconnected.com/lessons-learned-from-a-year-of-fighting-with-webpack-and-babel-ce3b4b634c46) -->
+
+<!-- TODO: [Maximally optimizing image loading for the web in 2021
+](https://www.industrialempathy.com/posts/image-optimizations/) -->
