@@ -43,7 +43,6 @@
     "webpack-merge": "^4.2.2"
   },
   "browserslist": [
-    "> 5%",
-    "last 6 versions"
+    "defaults"
   ]
 }
