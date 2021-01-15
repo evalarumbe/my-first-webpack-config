@@ -26,12 +26,20 @@ The audience at the moment is mostly just myself (for when I pick this back up h
 - [Development](https://webpack.js.org/guides/development/)
 - [Hot Module Replacement](https://webpack.js.org/guides/hot-module-replacement/)
 - [Production](https://webpack.js.org/guides/production/)
-- [Code splitting](https://v4.webpack.js.org/guides/code-splitting/) (to the end of the SplitChunksPlugin section)
+- [Code splitting](https://v4.webpack.js.org/guides/code-splitting/)
+- [Lazy loading](https://v4.webpack.js.org/guides/lazy-loading/)
 
 #### Up next
 
-- [Lazy loading](https://v4.webpack.js.org/guides/lazy-loading/)
+- [More splitting for better caching](https://medium.com/hackernoon/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758)
 - [Tree Shaking](https://webpack.js.org/guides/tree-shaking/)
+
+<!-- TODO: [Try different bundle analyzers](https://v4.webpack.js.org/guides/code-splitting/#bundle-analysis) -->
+
+<!-- TODO: [Lessons Learned From a Year of Fighting With Webpack and Babel](https://levelup.gitconnected.com/lessons-learned-from-a-year-of-fighting-with-webpack-and-babel-ce3b4b634c46) -->
+
+<!-- TODO: [Maximally optimizing image loading for the web in 2021
+](https://www.industrialempathy.com/posts/image-optimizations/) -->
 
 ## File structure
 
@@ -176,10 +184,3 @@ References:
 - [preset-env docs](https://babeljs.io/docs/en/babel-preset-env) - Babel documentation
 - [How to get polyfills with Babel 7 and Webpack](https://www.youtube.com/watch?v=YXtQms2msZQ&ab_channel=SwashbucklingwithCode) - YouTube
 - [Thread clarifying the Babel docs (npm i core-js regenerator-runtime)](https://stackoverflow.com/questions/55748204/babel-7-x-cant-resolve-core-js-modules-es-array-concat) - Stack Overflow
-
-<!-- TODO: [Try different bundle analyzers](https://v4.webpack.js.org/guides/code-splitting/#bundle-analysis) -->
-
-<!-- TODO: [Lessons Learned From a Year of Fighting With Webpack and Babel](https://levelup.gitconnected.com/lessons-learned-from-a-year-of-fighting-with-webpack-and-babel-ce3b4b634c46) -->
-
-<!-- TODO: [Maximally optimizing image loading for the web in 2021
-](https://www.industrialempathy.com/posts/image-optimizations/) -->
