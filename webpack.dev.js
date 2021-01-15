@@ -10,4 +10,8 @@ module.exports = merge(common, {
     writeToDisk: true,
     hot: true,
   },
+  optimization: {
+    // outputs comments to non-minified dev bundle indicating dead code as "unused harmony export"
+    usedExports: true
+  },
 });

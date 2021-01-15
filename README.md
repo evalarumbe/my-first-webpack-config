@@ -154,6 +154,54 @@ When configured the general recommended way `optimization.splitChunks { chunks: 
 
 *Thank you to this YouTuber: [Step By Step: Split Chunks Plugin #9 - Webpack 4](https://www.youtube.com/watch?v=sX_6ezKfvn0&ab_channel=ExcitonInteractiveLLC)*
 
+A more advanced implementation of splitChunksPlugin is now used in this repo, optimizing for caching: [The 100% correct way to split your chunks with Webpack](https://medium.com/hackernoon/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758)
+
+#### Tree shaking
+
+I didn't experience quite the expected behavior when I ran my own tests, so I feel like I'm missing something, but here's what I gather so far:
+
+Tree shaking does different things in development vs production mode (by default).
+
+##### Development mode
+
+In development, you can examine the non-minified bundle to see which parts of the code *would be* excluded. Add the following to `webpack.dev.js`
+
+```js
+optimization: {
+    // outputs comments to non-minified dev bundle indicating dead code as "unused harmony export"
+    usedExports: true
+  },
+```
+
+Example bundle output (Ctrl+F is your friend):
+
+```js
+
+/* unused harmony export unusedFunc */
+...
+const unusedFunc = () => {
+  console.log('Hi, I am never called, I just wanna see if I get shaken out');
+};
+```
+
+Note the above function definition still exists in the bundle; it's not eliminated.
+
+##### Production mode
+
+By default, the dead code is only dropped from the bundle in production mode (see what the [official Tree Shaking guide](https://v4.webpack.js.org/guides/tree-shaking/) has to say toward the end of the page about ModuleConcatenationPlugin). I haven't yet tested re-configuring this to eliminate the code in development.
+
+Here's where my experience diverged from my understanding of what the above Tree Shaking docs said I should expect. I expected that I would need to set this top-level property in my `package.json` for the dead code to be eliminated:
+
+```json
+"sideEffects": false
+```
+
+I tested this in two separate projects (including this one) and found that the above change to `package.json` made no difference to my output. In my experience, **the dev bundle always kept the dead code**, and **the production bundle always dropped it**, regardless of whether the line `"sideEffects": false` was present in `package.json`.
+
+I've left the line in this project's `package.json` just for the sake of explicitly indicating that this package intends to drop unused functions, even though I haven't seen it make a practical difference.
+
+I tested enough to get a reproducible result, but not enough to get to the bottom of understanding why. If you have any leads, I'd love to hear about it.
+
 ### Things I learned about Babel
 
 See `babel.config.json`. Since comments aren't supported in JSON, I'll explain here.

@@ -4,6 +4,7 @@
   "description": "SCSS and JS for Dev and Prod",
   "repository": "github:evalarumbe/evas-webpack-config.git",
   "main": "./src/index.js",
+  "sideEffects": false,
   "scripts": {
     "webp": "node webpack.config.prod.js",
     "prebuild": "npm run webp",

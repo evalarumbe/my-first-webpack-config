@@ -4,7 +4,10 @@ export const getPosts = async function () {
   return data.slice(0,3);
 };
 
-// TODO: are these the kinds of utils that lodash is good for?
 export const getRandomElement = (array) => {
   return array[Math.floor(Math.random() * array.length)];
 }
+
+export const unusedFunc = () => {
+  console.log('Hi, I am never called, I just wanna see if I get shaken out');
+};
