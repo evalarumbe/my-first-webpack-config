@@ -28,11 +28,13 @@ The audience at the moment is mostly just myself (for when I pick this back up h
 - [Production](https://webpack.js.org/guides/production/)
 - [Code splitting](https://v4.webpack.js.org/guides/code-splitting/)
 - [Lazy loading](https://v4.webpack.js.org/guides/lazy-loading/)
+- [More splitting for better caching](https://medium.com/hackernoon/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758)
 
 #### Up next
 
-- [More splitting for better caching](https://medium.com/hackernoon/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758)
 - [Tree Shaking](https://webpack.js.org/guides/tree-shaking/)
+
+<!-- TODO: Double-check your caching implementation makes the most of these tiny split bundles. Users should not be downloading all of them on every visit. -->
 
 <!-- TODO: [Try different bundle analyzers](https://v4.webpack.js.org/guides/code-splitting/#bundle-analysis) -->
 
