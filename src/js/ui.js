@@ -1,8 +1,11 @@
+console.log('Load ui.js');
+
 // local scripts
 import { getPosts, getRandomElement } from './lib.js';
 
 // TODO: make more deliberate choices about which funcs get arrows
 export const setTheme = () => {
+  console.log('Run setTheme');
   const themeOptions = [...document.querySelectorAll('#themes input[type=radio]')];
 
   const applyThemeStyles = (activeTheme) => {
@@ -57,6 +60,8 @@ export const setTheme = () => {
 };
 
 export const renderPosts = async () => {
+  console.log('Run renderPosts');
+
   // get the data
   const posts = await getPosts();
 

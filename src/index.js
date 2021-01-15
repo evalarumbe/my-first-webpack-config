@@ -1,6 +1,3 @@
-// local scripts
-import { renderPosts, setTheme } from './js/ui.js';
-
 // document
 import './index.html';
 
@@ -11,10 +8,17 @@ import './scss/main.scss';
 import './images/dog-importing-an-asset.jpg'; // TODO: is this necessary? other images were working fine without this
 
 (() => {
-  const main = function () {
+  const main = async function () {
+    // Check the console and the network tab to see load / running order
+    const { setTheme } = await import(/* webpackMode: "eager" */ './js/ui.js');
+    const { renderPosts } = await import(/* webpackPreload: true */ './js/ui.js');
+
     setTheme();
     renderPosts();
   };
 
-  window.addEventListener('load', main);
+  main().then(callback => {
+    window.addEventListener('load', callback);
+  }).catch(error => console.log(error.message, 'An error occurred (caught at the top level)'));
+
 })();
