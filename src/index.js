@@ -11,7 +11,7 @@ import './images/dog-importing-an-asset.jpg'; // TODO: is this necessary? other 
   async function main() {
     // Check the console and the network tab to see load / running order
     const { setTheme } = await import(/* webpackMode: "eager" */ './js/ui.js');
-    const { renderPosts } = await import(/* webpackPreload: true */ './js/ui.js');
+    const { renderPosts } = await import(/* webpackPreload: true */ './js/content.js');
 
     setTheme();
     renderPosts();
