@@ -1,7 +1,8 @@
 console.log('Load ui.js');
 
 // local scripts
-import { getPosts, getRandomElement } from './lib.js';
+import { getRandomElement } from './lib/utils.js';
+import { getPosts } from './lib/placeholder-data.js';
 
 // TODO: make more deliberate choices about which funcs get arrows
 export const setTheme = () => {
