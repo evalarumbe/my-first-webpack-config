@@ -83,17 +83,6 @@
 
     <p>It also gives JavaScript a good workout to keep it light and nimble. We're talking&hellip;</p>
 
-    <section id="tree-shaking">
-      <h2>tree shaking</h2>
-      <figure>
-        <picture>
-          <source type="image/webp" srcset="./images/tree-shaking.webp">
-          <img src="./images/tree-shaking.jpg" alt="Sparse trees in the sunshine" width="300" height="300">
-        </picture>
-        <figcaption>It's <em>JavaScript: The Good Parts</em> all over again<br><cite><a href="https://unsplash.com/photos/lEeIPHGACQ0" rel="noopener" target="_blank">Henry Desro</a></cite></figcaption>
-      </figure>
-    </section>
-
     <section id="transpiling">
       <h2>transpiling</h2>
 
@@ -170,8 +159,22 @@
       </figure>
     </section>
 
+    <section id="tree-shaking">
+      <h2>tree shaking</h2>
+      <figure>
+        <picture>
+          <source type="image/webp" srcset="./images/tree-shaking.webp">
+          <img src="./images/tree-shaking.jpg" alt="Sparse trees in the sunshine" width="300" height="300">
+        </picture>
+        <figcaption>It's <em>JavaScript: The Good Parts</em> all over again<br><cite><a href="https://unsplash.com/photos/lEeIPHGACQ0" rel="noopener" target="_blank">Henry Desro</a></cite></figcaption>
+      </figure>
+
+      <p>Turns out this is tricky to get working with dynamic imports, but the gallery in the lazy loading below uses a dynamically imported function that was defined in a tree-shaken file: <a href="https://medium.com/@christiango/the-unexpected-impact-of-dynamic-imports-on-tree-shaking-ddadeb135dd7" title="The unexpected impact of dynamic imports on tree shaking" rel="noopener" target="_blank">Magic</a>.</p>
+    </section>
+
     <section id="lazy-loading">
       <h2>lazy loading</h2>
+      <!-- TODO: maybe just make this figure load lazily? Just an aesthetic optimization. -->
       <figure>
         <picture>
           <source type="image/webp" srcset="./images/lazy-loading.webp">
@@ -179,6 +182,11 @@
         </picture>
         <figcaption>Not a sin, just misunderstood<br><cite><a href="https://unsplash.com/photos/uX2w48eXXqQ" rel="noopener" target="_blank">Roger Burkhard</a></cite></figcaption>
       </figure>
+
+      <button id="load-gallery" aria-controls="gallery-container">Load gallery</button>
+      <p>(Take a look at the JS responses in the Network tab and the console to see this load on request)</p>
+      <!-- TODO: reserve space for this in the flow to reduce CLS -->
+      <div id="gallery-container"></div>
     </section>
     
     <section id="dev-prod">

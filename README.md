@@ -28,20 +28,20 @@ The audience at the moment is mostly just myself (for when I pick this back up h
 - [Production](https://webpack.js.org/guides/production/)
 - [Code splitting](https://v4.webpack.js.org/guides/code-splitting/)
 - [Lazy loading](https://v4.webpack.js.org/guides/lazy-loading/)
-- [More splitting for better caching](https://medium.com/hackernoon/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758)
+- [More splitting for better caching](https://medium.com/hackernoon/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758) <!-- TODO: Double-check your caching implementation makes the most of these tiny split bundles. Users should not be downloading all of them on every visit. -->
+- [Tree Shaking](https://webpack.js.org/guides/tree-shaking/)
+- [Make dynamic imports play nice with tree shaking](https://medium.com/@christiango/the-unexpected-impact-of-dynamic-imports-on-tree-shaking-ddadeb135dd7)
 
 #### Up next
 
-- [Tree Shaking](https://webpack.js.org/guides/tree-shaking/)
+- Style the home page and deploy it so this repo makes more sense to people
 
-<!-- TODO: Double-check your caching implementation makes the most of these tiny split bundles. Users should not be downloading all of them on every visit. -->
+- Image optimization
+  - [Maximally optimizing image loading for the web in 2021](https://www.industrialempathy.com/posts/image-optimizations/)
 
-<!-- TODO: [Try different bundle analyzers](https://v4.webpack.js.org/guides/code-splitting/#bundle-analysis) -->
-
-<!-- TODO: [Lessons Learned From a Year of Fighting With Webpack and Babel](https://levelup.gitconnected.com/lessons-learned-from-a-year-of-fighting-with-webpack-and-babel-ce3b4b634c46) -->
-
-<!-- TODO: [Maximally optimizing image loading for the web in 2021
-](https://www.industrialempathy.com/posts/image-optimizations/) -->
+- See what else the nerds are recommending these days:
+  - [Try different bundle analyzers](https://v4.webpack.js.org/guides/code-splitting/#bundle-analysis)
+  - [Lessons Learned From a Year of Fighting With Webpack and Babel](https://levelup.gitconnected.com/lessons-learned-from-a-year-of-fighting-with-webpack-and-babel-ce3b4b634c46)
 
 ## File structure
 
@@ -201,6 +201,48 @@ I tested this in two separate projects (including this one) and found that the a
 I've left the line in this project's `package.json` just for the sake of explicitly indicating that this package intends to drop unused functions, even though I haven't seen it make a practical difference.
 
 I tested enough to get a reproducible result, but not enough to get to the bottom of understanding why. If you have any leads, I'd love to hear about it.
+
+##### Tree shaking with dynamic imports
+
+###### The goal
+
+It'd be nice for Webpack to shake away unused code, then allow our app to dynamically import pieces of what's left.
+
+E.g. `index.js` <---dynamically imports some functions from--- `content.js`,
+
+where `content.js` also exports other unused functions that we don't want our users to load.
+
+###### The problem
+
+> "When you dynamically import a module, it automatically makes that module ineligible for tree shaking."
+>
+> _[The unexpected impact of dynamic imports on tree shaking](https://medium.com/@christiango/the-unexpected-impact-of-dynamic-imports-on-tree-shaking-ddadeb135dd7)_
+
+###### Solution proposed by the above article (reworded)
+
+To get the best of both worlds, let's create a new file to go between the two. It should expose dynamically imported functions on the app side, but statically import those functions from the library side. We'll use ES Module re-export syntax to achieve this.
+
+E.g. `index.js` <---dynamic--- `lazy/content-blog.js` <---static--- `content.js`,
+
+where `lazy/content-blog.js` exposes one dynamically retrievable chunk only. Its code would look something like this:
+
+```js
+// lazy/content-blog.js
+export { renderBlog, renderAuthorBio } from './content.js';
+```
+
+_Note: `renderAuthorBio` isn't in this repo, this is just to make a point that it doesn't have to be one func per file.
+The idea is to group funcs that should be loaded at the same decision point._
+
+_E.g. if our app determines it should show the blog,
+that would be a good time to lazy-load both of these, so it makes sense to re-export them together._
+
+We can have several of these go-between files to serve up as many groups of library functions as necessary. Another file might load in, say, a gallery section of the same app:
+
+```js
+// lazy/content-gallery.js
+export { renderGallery } from './content.js';
+```
 
 ### Things I learned about Babel
 
