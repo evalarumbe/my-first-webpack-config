@@ -4,12 +4,11 @@ console.log('Load ui.js');
 import { getRandomElement } from './lib/utils.js';
 import { getPosts } from './lib/placeholder-data.js';
 
-// TODO: make more deliberate choices about which funcs get arrows
-export const setTheme = () => {
+export function setTheme() {
   console.log('Run setTheme');
   const themeOptions = [...document.querySelectorAll('#themes input[type=radio]')];
 
-  const applyThemeStyles = (activeTheme) => {
+  function applyThemeStyles(activeTheme) {
   // cases must match radio option ids in the DOM
     switch (activeTheme) {
       case 'midnight':
@@ -19,33 +18,32 @@ export const setTheme = () => {
         // TODO: set styles to daylight theme
         break;
     }
-  };
+  }
 
-  const updateTheme = (theme) => {
-    const updateUI = () => {
+  function updateTheme(theme) {
+    function updateUI() {
       const activeThemeContainer = document.getElementById('active-theme');
       activeThemeContainer.innerHTML = `Active theme: ${theme}`;
-    };
+    }
 
     applyThemeStyles(theme);
     updateUI();
-  };
+  }
 
-  const initUI = () => {
-    const handleSelectTheme = function(event) {
+  function initUI() {
+    function handleSelectTheme(event) {
       updateTheme(event.target.id);
       // TODO: Does a11y need us to explicitly show a state change in the DOM, or connect the 'active theme' text to the radio fieldset with something like aria-label?
-    };
+    }
     
     // listen for the user to update the theme
     themeOptions.forEach(radioInput => {
       // Note: onchange fires when a radio button is selected, except in <IE9 where it fires when a radio button is UNselected
-      // TODO: Consider adding <IE9 support
       radioInput.addEventListener('change', handleSelectTheme);
     });
-  };
+  }
 
-  const initTheme = () => {
+  function initTheme() {
     // if no options are checked (selected), 
     // TODO: check if the user has a preference with matchMedia() https://web.dev/prefers-color-scheme
     // otherwise, check a random one
@@ -54,13 +52,13 @@ export const setTheme = () => {
       randomOption.checked = true; // display checked state to user
       randomOption.dispatchEvent(new Event('change')); // run the handler
     }
-  };
+  }
 
   initUI();
   initTheme();
-};
+}
 
-export const renderPosts = async () => {
+export async function renderPosts() {
   console.log('Run renderPosts');
 
   // get the data
@@ -90,4 +88,4 @@ export const renderPosts = async () => {
   
   // place the list in the container
   postsContainer.appendChild(postsList);
-};
+}

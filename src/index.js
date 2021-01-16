@@ -8,14 +8,14 @@ import './scss/main.scss';
 import './images/dog-importing-an-asset.jpg'; // TODO: is this necessary? other images were working fine without this
 
 (() => {
-  const main = async function () {
+  async function main() {
     // Check the console and the network tab to see load / running order
     const { setTheme } = await import(/* webpackMode: "eager" */ './js/ui.js');
     const { renderPosts } = await import(/* webpackPreload: true */ './js/ui.js');
 
     setTheme();
     renderPosts();
-  };
+  }
 
   main().then(callback => {
     window.addEventListener('load', callback);
