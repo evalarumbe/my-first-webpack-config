@@ -21,14 +21,16 @@ The audience at the moment is mostly just myself (for when I pick this back up h
 
 #### Features
 
+In order of implementation
+
 - [Asset Management](https://webpack.js.org/guides/asset-management/)
 - [Output Management](https://webpack.js.org/guides/output-management/)
-- [Development](https://webpack.js.org/guides/development/)
+- [Development mode](https://webpack.js.org/guides/development/)
 - [Hot Module Replacement](https://webpack.js.org/guides/hot-module-replacement/)
-- [Production](https://webpack.js.org/guides/production/)
+- [Production mode](https://webpack.js.org/guides/production/)
 - [Code splitting](https://v4.webpack.js.org/guides/code-splitting/)
 - [Lazy loading](https://v4.webpack.js.org/guides/lazy-loading/)
-- [More splitting for better caching](https://medium.com/hackernoon/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758) <!-- TODO: Double-check your caching implementation makes the most of these tiny split bundles. Users should not be downloading all of them on every visit. -->
+- [More granular splitting for better caching](https://medium.com/hackernoon/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758) <!-- TODO: Double-check your caching implementation makes the most of these tiny split bundles. Users should not be downloading all of them on every visit. -->
 - [Tree Shaking](https://webpack.js.org/guides/tree-shaking/)
 - [Make dynamic imports play nice with tree shaking](https://medium.com/@christiango/the-unexpected-impact-of-dynamic-imports-on-tree-shaking-ddadeb135dd7)
 
