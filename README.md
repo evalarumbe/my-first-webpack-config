@@ -79,6 +79,7 @@ In order of implementation
 | `@babel/core`             | This is Babel! But it's useless without plugins or presets (which are collections of plugins). |
 | `@babel/preset-env`       | Preset based on [caniuse](https://caniuse.com/). I decide which syntax to change depending on the project's supported browsers. |
 | `core-js`                 | Provide polyfills for new js features that add functionality (more than just new syntax). ** Install as a _dependency_, not a devDependency** |
+| `gsap`                    | Popular animation library (optional) [GreenSock.com](https://greensock.com/)|
 
 ### CSS
 
