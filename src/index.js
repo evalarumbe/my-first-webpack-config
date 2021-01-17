@@ -12,9 +12,11 @@ import './images/dog-importing-an-asset.jpg'; // TODO: is this necessary? other 
     // Check the console and the network tab to see load / running order
     const { setTheme } = await import(/* webpackMode: "eager" */ './js/ui.js'); // TODO: consider exposing a lazy-loadable version but that might be overkill for right now
     const { renderBlog } = await import(/* webpackPreload: true */ './js/lazy/content-blog.js');
-    
+    const { slideSections } = await import(/* webpackPreload: true */ './js/lazy/animation-layout.js');
+
     setTheme();
     renderBlog();
+    slideSections();
 
     // Lazy-load on user input
     const galleryButton = document.getElementById('load-gallery');

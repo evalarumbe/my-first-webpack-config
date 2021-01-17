@@ -44,7 +44,8 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "core-js": "^3.8.2"
+    "core-js": "^3.8.2",
+    "gsap": "^3.6.0"
   },
   "browserslist": [
     "defaults"

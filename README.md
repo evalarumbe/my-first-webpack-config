@@ -33,6 +33,7 @@ In order of implementation
 - [More granular splitting for better caching](https://medium.com/hackernoon/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758) <!-- TODO: Double-check your caching implementation makes the most of these tiny split bundles. Users should not be downloading all of them on every visit. -->
 - [Tree Shaking](https://webpack.js.org/guides/tree-shaking/)
 - [Make dynamic imports play nice with tree shaking](https://medium.com/@christiango/the-unexpected-impact-of-dynamic-imports-on-tree-shaking-ddadeb135dd7)
+- [GSAP via npm with bonus plugin (ScrollTrigger)](https://greensock.com/docs/v3/Plugins/ScrollTrigger)
 
 #### Up next
 
